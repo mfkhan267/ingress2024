@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kkr  
+  name: kkr
+  labels:
+    app: kkr
 spec:
   replicas: 1
   selector:
@@ -13,18 +15,21 @@ spec:
         app: kkr
     spec:
       containers:
-      - name: kkr
+      - name: microservice-container
         image: docker.io/mfk267/gsd:kkr2024
         ports:
         - containerPort: 8080
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: kkr  
+  name: kkr
 spec:
   type: ClusterIP
-  ports:
-  - port: 80
   selector:
     app: kkr
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
