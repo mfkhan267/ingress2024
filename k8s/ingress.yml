@@ -17,25 +17,25 @@ spec:
           service:
             name: kkr
             port:
-              number: 8080
+              number: 80
       - path: /srh(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: srh
             port:
-              number: 8080
+              number: 80
       - path: /csk(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: csk
             port:
-              number: 8080
+              number: 80
       - path: /(.*)
         pathType: Prefix
         backend:
           service:
             name: kkr
             port:
-              number: 8080
+              number: 80
